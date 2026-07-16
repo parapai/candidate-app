@@ -9,7 +9,6 @@ services:
     ports:
       - "5435:5432"
     volumes:
-      - ./init-db:/docker-entrypoint-initdb.d
       - postgres_data:/var/lib/postgresql/data
     networks:
       - product-network
@@ -21,7 +20,7 @@ services:
       dockerfile: Dockerfile
     container_name: candidate_app
     ports:
-    - "<host-port>:<container-port>"
+      - "9021:8080"
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/sandbox_db
       - SPRING_DATASOURCE_USERNAME=admin

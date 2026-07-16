@@ -1,6 +1,9 @@
 databaseChangeLog:
   - include:
-      file: db/changelog/sql/create_candidate.sql
-
+      file: db/changelog/sql/V1__create_candidate.sql
   - include:
-      file: db/changelog/sql/create_interview_schedule.sql
+      file: db/changelog/sql/V2__create_interview_schedule.sql
+  - include:
+      file: db/changelog/sql/V3__seed_candidate.sql
+  - include:
+      file: db/changelog/sql/V4__seed_interview_schedule.sql

@@ -22,6 +22,6 @@ RUN rm -rf /usr/local/tomcat/webapps/ROOT \
 
 COPY --from=builder /app/target/*.war /usr/local/tomcat/webapps/ROOT.war
 
-EXPOSE 9201
+EXPOSE 9021
 
 CMD ["catalina.sh", "run"]
