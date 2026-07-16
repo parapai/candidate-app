@@ -132,7 +132,7 @@ http://localhost:9021/v3/api-docs
 Buat database PostgreSQL
 
 ```sql
-CREATE DATABASE candidate_db;
+CREATE DATABASE sandbox_db;
 ```
 
 Konfigurasi datasource pada `application.yml`
@@ -140,9 +140,9 @@ Konfigurasi datasource pada `application.yml`
 ```yaml
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/candidate_db
-    username: postgres
-    password: postgres
+    url: jdbc:postgresql://localhost:5435/sandbox_db
+    username: admin
+    password: admin
 ```
 
 Jalankan aplikasi
