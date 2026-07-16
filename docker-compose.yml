@@ -1,0 +1,41 @@
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: postgres_db
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=sandbox_db
+    ports:
+      - "5435:5432"
+    volumes:
+      - ./init-db:/docker-entrypoint-initdb.d
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - product-network
+
+  # --- Service Aplikasi Java (Tomcat + War) ---
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: candidate_app
+    ports:
+    - "<host-port>:<container-port>"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/sandbox_db
+      - SPRING_DATASOURCE_USERNAME=admin
+      - SPRING_DATASOURCE_PASSWORD=admin
+    depends_on:
+      - db 
+    networks:
+      - product-network
+
+volumes:
+  postgres_data:
+
+networks:
+  product-network:
+    driver: bridge
+  
+  

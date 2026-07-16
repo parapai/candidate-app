@@ -1,0 +1,6 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/sql/create_candidate.sql
+
+  - include:
+      file: db/changelog/sql/create_interview_schedule.sql
