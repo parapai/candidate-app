@@ -7,37 +7,37 @@
 ![Docker](https://img.shields.io/badge/Docker-Ready-2496ED)
 ![Swagger](https://img.shields.io/badge/OpenAPI-Swagger-85EA2D)
 
-RESTful API untuk mengelola data kandidat dan jadwal interview menggunakan Spring Boot.
+A RESTful API for managing candidate information and interview schedules built with Spring Boot.
 
-Project ini dibuat sebagai implementasi backend modern dengan menerapkan REST API, JPA Specification, Liquibase, Docker, Swagger/OpenAPI, serta unit testing menggunakan JUnit dan Mockito.
+This project demonstrates modern backend development practices using REST APIs, JPA Specification for dynamic queries, Liquibase for database versioning, Docker for containerization, Swagger/OpenAPI for API documentation, and JUnit with Mockito for unit testing.
 
 ---
 
 # Features
 
-### Candidate Management
+## Candidate Management
 
 - Create Candidate
-- Get Candidate Detail
-- Get Candidate List
-- Update Candidate
+- Retrieve Candidate Details
+- Retrieve Candidate List
+- Update Candidate Information
 - Delete Candidate
 - Update Candidate Status
 
-### Interview Schedule
+## Interview Schedule
 
 - Create Interview Schedule
-- Get Interview Schedule
+- Retrieve Interview Schedule
 
-### API Features
+## API Features
 
-- Search Candidate
+- Search Candidates
 - Filter by Status
 - Pagination
 - Dynamic Sorting
 - Bean Validation
-- Global Exception Handler
-- Standard API Response
+- Global Exception Handling
+- Standardized API Response
 - OpenAPI Documentation
 
 ---
@@ -50,7 +50,7 @@ Project ini dibuat sebagai implementasi backend modern dengan menerapkan REST AP
 - PostgreSQL
 - Liquibase
 - Spring Validation
-- Swagger OpenAPI
+- Swagger / OpenAPI
 - Maven
 - Docker
 - JUnit 5
@@ -60,7 +60,7 @@ Project ini dibuat sebagai implementasi backend modern dengan menerapkan REST AP
 
 # Project Structure
 
-```
+```text
 src
 ├── controller
 ├── service
@@ -80,46 +80,46 @@ src
 
 # Quick Start (Docker)
 
-Clone repository
+Clone the repository:
 
 ```bash
 git clone https://github.com/parapai/candidate-app.git
 ```
 
-Masuk ke project
+Navigate to the project directory:
 
 ```bash
 cd candidate-app
 ```
 
-Build dan jalankan aplikasi
+Build and start the application:
 
 ```bash
 docker compose up --build -d
 ```
 
-Pastikan container berjalan
+Verify that the containers are running:
 
 ```bash
 docker ps
 ```
 
-Docker Compose akan menjalankan:
+Docker Compose will start:
 
-- Candidate API
+- Candidate Management API
 - PostgreSQL Database
 
-Saat aplikasi pertama kali dijalankan, Liquibase akan menjalankan database migration secara otomatis sehingga tabel akan dibuat tanpa perlu menjalankan SQL secara manual.
+When the application starts for the first time, Liquibase automatically executes all database migrations, so no manual SQL setup is required.
 
-Setelah container berhasil berjalan, API dapat langsung digunakan.
+Once the containers are running successfully, the API is ready to use.
 
-Swagger UI
+### Swagger UI
 
 ```
 http://localhost:9021/swagger-ui/index.html
 ```
 
-OpenAPI
+### OpenAPI Specification
 
 ```
 http://localhost:9021/v3/api-docs
@@ -129,13 +129,13 @@ http://localhost:9021/v3/api-docs
 
 # Running Without Docker
 
-Buat database PostgreSQL
+Create a PostgreSQL database:
 
 ```sql
 CREATE DATABASE sandbox_db;
 ```
 
-Konfigurasi datasource pada `application.yml`
+Configure the datasource in `application.yml`:
 
 ```yaml
 spring:
@@ -145,15 +145,19 @@ spring:
     password: admin
 ```
 
-Jalankan aplikasi
+Build the project:
 
 ```bash
 mvn clean install
+```
 
+Run the application:
+
+```bash
 mvn spring-boot:run
 ```
 
-atau
+or
 
 ```bash
 java -jar target/candidate-app.jar
@@ -163,23 +167,23 @@ java -jar target/candidate-app.jar
 
 # Database Migration
 
-Project ini menggunakan **Liquibase**.
+This project uses **Liquibase** for database version control.
 
-Setiap perubahan database dilakukan menggunakan migration sehingga struktur database tetap konsisten di seluruh environment.
+All schema changes are managed through versioned migration scripts to ensure consistency across different environments.
 
-Migration akan dijalankan otomatis saat aplikasi startup.
+Database migrations are executed automatically when the application starts.
 
 ---
 
 # API Documentation
 
-Swagger UI
+### Swagger UI
 
 ```
 http://localhost:9021/swagger-ui/index.html
 ```
 
-OpenAPI JSON
+### OpenAPI JSON
 
 ```
 http://localhost:9021/v3/api-docs
@@ -200,7 +204,7 @@ http://localhost:9021/v3/api-docs
 | PATCH | /api/candidates/{id}/status |
 | DELETE | /api/candidates/{id} |
 
-## Interview
+## Interview Schedule
 
 | Method | Endpoint |
 |---------|----------|
@@ -213,31 +217,33 @@ http://localhost:9021/v3/api-docs
 
 ### Search
 
-```
+```http
 GET /api/candidates?search=john
 ```
 
 ### Filter
 
-```
+```http
 GET /api/candidates?status=INTERVIEW
 ```
 
 ### Pagination
 
-```
+```http
 GET /api/candidates?page=1&limit=10
 ```
 
 ### Sorting
 
-```
+```http
 GET /api/candidates?sortBy=name&sortDirection=asc
 ```
 
 ---
 
 # Running Tests
+
+Run all unit tests:
 
 ```bash
 mvn test
@@ -247,7 +253,7 @@ mvn test
 
 # Architecture
 
-```
+```text
                 Client
                    │
                    ▼
@@ -275,10 +281,10 @@ mvn test
 # Future Improvements
 
 - JWT Authentication
-- Role Based Authorization
-- Refresh Token
-- Email Notification
-- File Upload CV
+- Role-Based Authorization
+- Refresh Token Support
+- Email Notifications
+- CV File Upload
 - API Versioning
 - CI/CD Pipeline
 - Kubernetes Deployment
@@ -291,6 +297,4 @@ mvn test
 
 Backend Engineer
 
-GitHub
-
-https://github.com/parapai
+GitHub: https://github.com/parapai
